@@ -21,6 +21,7 @@ ALTER TABLE IF EXISTS public.fatalities
 ALTER TABLE fatalities
 ALTER COLUMN fat_age TYPE NUMERIC(3);
 
+DROP TABLE FATALITIES
 
 SELECT *
 FROM fatalities
@@ -205,8 +206,10 @@ event_narrative character varying
 DROP TABLE storms
 
 CREATE TABLE storms (
-begin_date_time timestamp,
-end_date_time timestamp,
+begin_date date,
+begin_time time,
+end_date date,
+end_time time,
 episode_id integer,
               event_id integer,
             event_type character varying(36),
