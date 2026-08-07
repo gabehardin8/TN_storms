@@ -1,6 +1,6 @@
 SELECT *
 FROM fatalities
-/
+
 SELECT *
 FROM locations
 
@@ -17,5 +17,9 @@ SELECT begin_date_time,COUNT(deaths_direct) AS fatalities
 FROM storms INNER JOIN fatalities USING(event_id)
 ORDER BY fatalities DESC
 
-SELECT *
+SELECT cz_name, COUNT(event_narrative) as en
 FROM storms
+WHERE event_narrative LIKE '%road%'
+GROUP BY cz_name
+ORDER BY en DESC
+ 
