@@ -248,10 +248,53 @@ CREATE TABLE storms (
 	event_narrative character varying
 )
 
-SELECT *
-FROM storms
-WHERE injuries_direct > 10
-ORDER BY injuries_direct DESC
+DROP TABLE storms
+
+CREATE TABLE storms (
+	begin_date date,
+	begin_time time,
+	end_date date,
+	end_time time,
+	episode_id integer,
+	event_id integer,
+	event_type character varying(36),
+	cz_type character varying(5),
+	cz_fips integer,
+	cz_name character varying(36),
+	wfo character varying(5),
+	cz_timezone character varying (10),
+	injuries_direct integer,
+	injuries_indirect integer,
+	deaths_direct integer,
+	deaths_indirect integer,
+	damage_property integer,
+	damage_crops integer,
+	source character varying(50),
+	magnitude numeric,
+	magnitude_type character varying(5),
+	flood_cause character varying(36),
+	tor_f_scale character varying(5),
+	tor_length numeric,
+	tor_width numeric,
+	tor_other_wfo character varying(5),
+	tor_other_cz_fips numeric,
+	tor_other_cz_name character varying(24),
+	begin_range numeric,
+	begin_azimuth character varying(5),
+	begin_location character varying(50),
+	end_range numeric,
+	end_azimuth character varying(5),
+	end_location character varying(50),
+	begin_lat numeric,
+	begin_lon numeric,
+	end_lat numeric,
+	end_lon numeric,
+	episode_narrative character varying,
+	event_narrative character varying,
+	road_closures character varying(10),
+	power_outage character varying(10),
+	tree_damage character varying(10)
+)
 
 SELECT *
 FROM storms
