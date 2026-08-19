@@ -193,3 +193,9 @@ SELECT * FROM dim_location
 SELECT * FROM storms
 
 SELECT * FROM storm_facts
+
+SELECT current_user
+
+SE
+
+ALTER USER postgres WITH PASSWORD 'postgres';
