@@ -39,7 +39,7 @@ For data modeling, the cleaned CSV data was loaded into PostgreSQL through pgAdm
 
 ## Dashboard
 
-[View the dashboard export (PDF)](sql_analysis_modelling/Gabe_hardin_NSS_capstone.pdf)
+[View the dashboard export (PDF)](sql_analysis_modelling/Gabe_hardin_NSS_capstone1.pdf)
 
 ## Contact
 
