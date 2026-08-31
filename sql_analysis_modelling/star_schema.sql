@@ -1,4 +1,5 @@
---flat file import as source data
+
+--flat file imported as source data
 
 CREATE TABLE storms (
 	begin_date 			date,
@@ -25,12 +26,11 @@ CREATE TABLE storms (
 	total_severity 		numeric
 )
 
-SELECT end_range
-FROM storms
-WHERE end_range > 5
-ORDER BY end_range DESC
+SELECT * FROM storms
 
 DROP TABLE storms
+
+
 
 -- creating the calendar table here
 
@@ -71,12 +71,14 @@ SELECT *
 FROM dim_date
 
 
+
 -- making event type dimensions table
 
 CREATE TABLE dim_event_type(
 	event_type_key SERIAL PRIMARY KEY
 	,event_type_name VARCHAR(50) NOT NULL UNIQUE
 );
+
 
 --inserting data from storms table
 INSERT INTO dim_event_type (event_type_name)
@@ -146,6 +148,7 @@ SELECT * FROM storm_facts
 
 DROP TABLE storm_facts
 
+
 -- now I have to insert a bunch of stuff into my fact table
 INSERT INTO storm_facts (
     event_id, event_type_key, location_key, begin_date_key, end_date_key,
@@ -174,6 +177,7 @@ JOIN dim_location loc ON county_name = cz_name
 ON CONFLICT (event_id) DO NOTHING;
 
 
+-- running a query to ensure everything was modelled correctly and all the joins work
 SELECT dd.year, et.event_type_name, COUNT(*) AS event_count,
        SUM(f.damage_property + f.damage_crops) AS total_damage,
        AVG(f.damage_severity) AS avg_severity
@@ -183,19 +187,3 @@ JOIN dim_event_type et ON et.event_type_key = f.event_type_key
 GROUP BY dd.year, et.event_type_name
 ORDER BY total_damage DESC
 LIMIT 10;
-
-SELECT * FROM storm_facts
-
-SELECT * FROM dim_event_type;
-
-SELECT * FROM dim_location
-
-SELECT * FROM storms
-
-SELECT * FROM storm_facts
-
-SELECT current_user
-
-SE
-
-ALTER USER postgres WITH PASSWORD 'postgres';
